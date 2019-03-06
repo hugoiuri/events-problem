@@ -1,6 +1,6 @@
 const pkg = require('../../package.json');
 
-const controller = (() => {
+const healthStatusController = (() => {
   const getStatus = (req, res) => {
     const health = {
       datetime: new Date(),
@@ -17,4 +17,4 @@ const controller = (() => {
   };
 })();
 
-module.exports = controller;
+module.exports = healthStatusController;

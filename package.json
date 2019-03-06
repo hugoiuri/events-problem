@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "depcheck": "depcheck ./ --ignores sequelize-cli,pg",
+    "depcheck": "depcheck",
     "coverage": "nyc report",
     "check": "eslint ./src/**.js .",
     "check-coverage": "nyc check-coverage  --branches 50 --functions 70 --lines 70",
@@ -19,6 +19,7 @@
   "dependencies": {
     "compression": "^1.7.3",
     "cors": "^2.8.5",
+    "djv": "^2.1.2",
     "eslint": "^5.15.1",
     "express": "^4.16.4",
     "helmet": "^3.15.1",

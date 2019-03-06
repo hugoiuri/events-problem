@@ -3,6 +3,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const cors = require('cors');
 const router = require('../router');
+const errorHandlers = require('../error-handlers');
 const config = require('../config');
 const { requestLogger, logger } = require('../logger');
 const pkg = require('../../package.json');
@@ -20,6 +21,7 @@ const server = (() => {
     app.use(helmet());
     app.use(compression());
     app.use('/', router());
+    app.use(errorHandlers);
 
     serverProcess = app.listen(app.get('port'), () => {
       logger.info('------------------------------------------------------------------');
