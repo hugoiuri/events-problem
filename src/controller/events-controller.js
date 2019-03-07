@@ -1,6 +1,12 @@
+const { eventsModel } = require('../model');
+
 const eventsController = (() => {
-  const postEvent = (req, res) => {
-    return res.status(200).send('test');
+  const postEvent = async (req, res) => {
+    const { body } = req;
+
+    const event = await eventsModel.create(body);
+
+    return res.status(201).send(event);
   };
 
   return {

@@ -9,7 +9,7 @@
     "check": "eslint ./src/**.js .",
     "check-coverage": "nyc check-coverage  --branches 50 --functions 70 --lines 70",
     "pretest": "npm run depcheck && npm run check",
-    "test": "nyc --reporter=lcov _mocha --exit",
+    "test": "nyc --reporter=lcov _mocha",
     "posttest": "npm run coverage && npm run check-coverage",
     "start": "node ./src/index.js"
   },
@@ -23,6 +23,7 @@
     "eslint": "^5.15.1",
     "express": "^4.16.4",
     "helmet": "^3.15.1",
+    "mongodb": "^3.1.13",
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
     "winston": "^3.2.1"

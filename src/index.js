@@ -1,12 +1,14 @@
 const pkg = require('../package.json');
 const server = require('./server');
-const { logger } = require('./logger')
+const database = require('./database');
+const { logger } = require('./logger');
 
 process.title = pkg.name;
 
 const shutdown = async () => {
   logger.info('Gracefully shutdown in progress');
   await server.stop();
+  await database.close();
   process.exit(0);
 };
 
@@ -27,6 +29,7 @@ process.on('SIGTERM', shutdown)
 
 (async () => {
   try {
+    await database.connect();
     await server.start();
   } catch (err) {
     logger.error('[APP] initialization failed', err);
