@@ -13,18 +13,17 @@ const logger = () => {
         winston.format.colorize(),
         winston.format.timestamp(),
         winston.format.printf(formatter)),
-      transports: [new winston.transports.Console()],
-      exitOnError: false
-    });
-
-
-    winstonLogger.stream = {
-      write: (message) => {
-        winston.info(message);
-      }
-    };
-  }
-
+        transports: [new winston.transports.Console()],
+        exitOnError: false
+      });
+      
+      winstonLogger.stream = {
+        write: (message) => {
+          winston.info(message);
+        }
+      };
+    }
+    
   return winstonLogger;
 };
 

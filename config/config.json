@@ -4,7 +4,7 @@
   "LOG_ALL_REQUESTS": false,
   "LOG_LEVEL": "info",
   "DATABASE_NAME": "events",
-  "DATABASE_URI": "mongodb://localhost:27017",
+  "DATABASE_URI": "mongodb://mongo:27017/events",
   "EXTERNAL_API_BASE_URL": "https://storage.googleapis.com",
   "EXTERNAL_API_EVENTS_PATH": "/test/events.json"
 }
