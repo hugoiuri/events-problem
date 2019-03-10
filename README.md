@@ -9,7 +9,7 @@ Este projeto tem como finalidade resolver problemas relacionados a registro e co
 
 O objetivo desta API é registrar as informações de eventos de navegação dos usuários de um site.
 
-#### Uso da API de criação de requests
+#### Uso da API Coletora
 
 ```sh
 POST /events HTTP/1.1
@@ -18,20 +18,20 @@ Content-Type: application/json
 
 ```json
 {
-  "evemt": "string",
-  "timestamp": "date-time"
+  "evemt": "buy",
+  "timestamp": "2016-09-22T13:57:31.2311892-04:00"
 }
 ```
 
-#### Retorno da API de criação de requests
+#### Retorno da API Coletora
 
 - 201   Created
 
 ```json
 {
-  "evemt": "string",
-  "timestamp": "date-time",
-  "_id": "string"
+  "evemt": "buy",
+  "timestamp": "2016-09-22T13:57:31.2311892-04:00",
+  "_id": "5c8581f76486797cecdd030e"
 }
 ```
 
@@ -41,18 +41,14 @@ Content-Type: application/json
 
 Esta API tem como objetivo fornecer um mecanismo para a construção de um autocomplete baseado nas informações dos nomes dos eventos registrados no banco de dados.
 
-#### Uso da API de consulta de requests
+#### Uso da API de autocomplete
 
 ```sh
 GET /event-names?text=:text HTTP/1.1
 Content-Type: application/json
 ```
 
-```
-text=co
-```
-
-#### Retorno de consulta de requests
+#### Retorno de autocomplete
 
 - 200
 
@@ -67,11 +63,43 @@ text=co
 ]
 ```
 
+### API timeline
 
+Esta API tem como objetivo fornecer um mecanismo de compilação dos eventos em uma linha do tempo ordenada, agrupando as compras e os itens comprados
+
+#### Uso da API timeline
+
+```sh
+GET /timeline HTTP/1.1
+Content-Type: application/json
+```
+
+#### Retorno timeline
+
+- 200
+
+```json
+{
+  "timeline": [
+    {
+      "timestamp": "2016-10-02T11:37:31.2300892-03:00",
+      "revenue": 120.0,
+      "transaction_id": "3409340",
+      "store_name": "BH Shopping",
+      "products": [
+        {
+          "name": "Tenis Preto",
+          "price": 120
+        }
+      ]
+    }
+  ]
+}
+```
+
+- 500
 
 ## Configurações
-
-> Lista com todas as configurações possíveis e seus defaults caso existam
 
 - **PORT**: Porta na qual o servidor web ficará disponível (default: 8339);
 - **LOG_HEALTH_STATUS**: Informa se deve ou não registrar logs de requisições ao health-status (default: false);
@@ -79,6 +107,8 @@ text=co
 - **LOG_LEVEL**: Informa o level de registro de logs [ emerg, alert, crit, error, warning, notice, info, debug ] (default: info);
 - **DATABASE_NAME**: Nome do banco de dados;
 - **DATABASE_URI**: URI para conexão com o mongodb;
+- **EXTERNAL_API_BASE_URL**: Url base para a api externa de eventos;
+- **EXTERNAL_API_EVENTS_PATH**: Caminho para o recurso de eventos da API.
 
 ## Stack
 
@@ -110,7 +140,7 @@ npx mocha
 
 ### Executando local
 
-Para executar o projeto localmente basta executar o seguinte comando:
+Para executar o projeto localmente basta ajustar as configurações no arquivo /config.config.js e executar o seguinte comando:
 
 ```sh
 npm i

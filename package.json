@@ -7,7 +7,7 @@
     "depcheck": "depcheck",
     "coverage": "nyc report",
     "check": "eslint ./src/**.js .",
-    "check-coverage": "nyc check-coverage  --branches 50 --functions 70 --lines 70",
+    "check-coverage": "nyc check-coverage  --branches 60 --functions 60 --lines 60",
     "pretest": "npm run depcheck && npm run check",
     "test": "nyc --reporter=lcov _mocha",
     "posttest": "npm run coverage && npm run check-coverage",
@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
     "djv": "^2.1.2",
@@ -26,6 +27,7 @@
     "mongodb": "^3.1.13",
     "morgan": "^1.9.1",
     "nconf": "^0.10.0",
+    "nock": "^10.0.6",
     "winston": "^3.2.1"
   },
   "devDependencies": {
