@@ -1,6 +1,6 @@
 # Events problem
 
-Este projeto tem como finalidade resolver problemas relacionados a registro e consumo de eventos de navegação dos usuários em um site.
+Este projeto tem como finalidade resolver problemas relacionados ao registro e consumo de eventos de navegação dos usuários em um site.
 
 
 ## API
