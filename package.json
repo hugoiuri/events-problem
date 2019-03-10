@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "nodes": "10.15.3"
+  },
   "scripts": {
     "depcheck": "depcheck",
     "coverage": "nyc report",
@@ -11,7 +14,8 @@
     "pretest": "npm run depcheck && npm run check",
     "test": "nyc --reporter=lcov _mocha",
     "posttest": "npm run coverage && npm run check-coverage",
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "stress": "autocannon -c 20 -d 60 -p 10 -l http://localhost:8339/event-names?text=co"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +35,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "autocannon": "^3.2.0",
     "chai": "^4.2.0",
     "depcheck": "^0.7.2",
     "mocha": "^6.0.2",

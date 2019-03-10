@@ -117,6 +117,7 @@ Para a criação deste projeto utilizamos as seguintes tecnologias e frameworks:
 - [Node.js] - Plataforma de desenvolvimento
 - [Express] - Web framework minimalista desenvolvido em node.js
 - [Mongodb] - Banco de dados No SQL
+- [Docker CE] - Plataforma de deploy
 
 ## Instalação e execução da aplicação
 
@@ -136,8 +137,6 @@ npm i
 npx mocha
 ```
 
-> Caso exista algum outro script npm relevante no projeto pode ser adicionado aqui
-
 ### Executando local
 
 Para executar o projeto localmente basta ajustar as configurações no arquivo /config.config.js e executar o seguinte comando:
@@ -147,6 +146,29 @@ npm i
 npm start
 ```
 
+### Executando local com Docker
+
+```sh
+docker-compose up -d
+```
+
+### Executando testes de stress local
+
+```sh
+npm i
+npm start &
+npm run stress
+```
+
+### Executando testes de stress local com Docker
+
+```sh
+docker-compose up -d
+npm run stress
+```
+
+
   [Node.js]: <https://nodejs.org>
   [express]: <http://expressjs.com>
   [Mongodb]: <https://www.mongodb.com/>
+  [Docker CE]: <https://www.docker.com/>
